@@ -61,9 +61,19 @@
            }
         }
 
+        /*
+        Play a five round game of rock paper scissors
+        call gameplay function to play the full 5 rounds
+        keep score
+        report winner/loser at the end of the game
+        */
+        function game(){
+            return gameplay(playerSelection,computerSelection)
+        }
+
         const playerSelection = prompt('Rock, paper, or scissors?')
         const computerSelection = getComputerChoice();
-        console.log(gameplay(playerSelection,computerSelection));
+        console.log(game());
 
     </script>
 
