@@ -97,8 +97,9 @@
            }
         }
 
-        let playerSelection = prompt('Rock, paper, or scissors?')
-        console.log(gameplay(playerSelection,getComputerChoice()));
+        const playerSelection = prompt('Rock, paper, or scissors?')
+        const computerSelection = getComputerChoice();
+        console.log(gameplay(playerSelection,computerSelection));
     </script>
 
 </body>
