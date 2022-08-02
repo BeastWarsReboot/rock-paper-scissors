@@ -15,18 +15,68 @@
         This function is used to make computer play
         */
         function getComputerChoice(){
-            /*
-            Computer must randomly choose between 'Rock' 'Paper' or 'scissors'
-            Random
-
-            Create array of game choices
-            Randomly choose one from the array to display
-            */
-           let computerPlay = ['Rock','Paper','Scissors'];
-           console.log(computerPlay[Math.floor(Math.random() * 3)]);
+           let computerPlay = ['rock','paper','scissors'];
+           let computerSelection = computerPlay[Math.floor(Math.random() * 3)];
+           return computerSelection;
         }
 
-        getComputerChoice();
+        /*
+        Write a function that plays a single round of Rock Paper Scissors
+
+        Function should take two parameters, playerSelection and computerSelection
+        return a string that declares the winner of the round like so: 
+        "You lose! Paper beats rock!"
+        */
+        function gameplay(playerSelection, computerSelection){
+            /*
+            get playerSelection and computerSelection
+            make playerSelection case insensitive 
+            test playerSelection against computer selection
+            declare winner of the round with returned string message
+
+            switch(playerSelection){
+                case 'rock':
+                    if(computerSelection is rock)
+                        return 'Tie Game'
+                    if(computerSelection is 'paper')
+                        return 'You lose'
+                    if(computerSelection is scissors)
+                        return 'You win' 
+                case 'paper':
+                    tie
+                    lose
+                    win
+
+                case 'scissors':
+                    tie
+                    lose
+                    win
+                default:
+                    return invalid playerSelection
+            }
+            */
+           playerSelection = playerSelection.toLowerCase();
+           console.log('You chose ' + playerSelection + '!');
+           console.log('The computer chose ' + computerSelection + '!');
+
+           switch(playerSelection){
+                case 'rock':
+                    if(computerSelection === 'rock'){
+                        return 'Same choice, its a tie!';
+                    }
+                    else if(computerSelection === 'paper'){
+                        return 'Paper beats rock. You lose!'
+                    }
+                    else {
+                        return 'Rock beats scissors. You win!';
+                    }
+                case 'paper':
+                case 'scissors':
+           }
+        }
+
+        let playerSelection = prompt('Rock, paper, or scissors?')
+        console.log(gameplay(playerSelection,getComputerChoice()));
     </script>
 
 </body>
