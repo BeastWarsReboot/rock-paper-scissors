@@ -55,23 +55,45 @@
                     return invalid playerSelection
             }
             */
+
            playerSelection = playerSelection.toLowerCase();
+
            console.log('You chose ' + playerSelection + '!');
            console.log('The computer chose ' + computerSelection + '!');
 
            switch(playerSelection){
                 case 'rock':
                     if(computerSelection === 'rock'){
-                        return 'Same choice, its a tie!';
+                        return 'Same choice, it\'s a tie!';
                     }
                     else if(computerSelection === 'paper'){
-                        return 'Paper beats rock. You lose!'
+                        return 'Paper beats rock. You lose!';
                     }
                     else {
                         return 'Rock beats scissors. You win!';
                     }
                 case 'paper':
+                    if(computerSelection === 'rock'){
+                        return 'Paper beats rock. You win!';
+                    }
+                    else if(computerSelection === 'paper'){
+                        return 'Same choice, it\'s a tie!';
+                    }
+                    else {
+                        return 'Scissors beats paper. You lose!';
+                    }
                 case 'scissors':
+                    if(computerSelection === 'rock'){
+                        return 'Rock beats scissors. You lose!';
+                    }
+                    else if(computerSelection === 'paper'){
+                        return 'Scissors beats paper. You win!';
+                    }
+                    else {
+                        return 'Same choice, it\'s a tie!';
+                    }
+                default:
+                    return 'Invalid player choice'
            }
         }
 
