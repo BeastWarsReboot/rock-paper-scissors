@@ -70,27 +70,9 @@
         }
 
         /*
-        Play a five round game of rock paper scissors
-        call gameplay function to play the full 5 rounds
-        keep score
-        report winner/loser at the end of the game
-
-        for(counter for five rounds of play)
-            computer score = 0
-            player score = 0
-            round = 0
-            gameplay()
-            if(gameplay === win)
-                playerScore += 1
-            else
-                computerScore += 1
-        EXIT
-
-        after five rounds, if(playerScore > computer score)
-            return You Win
-        else
-            return Computer wins
-        EXIT
+        game() plays five rounds of gameplay() to complete a full game of rock, paper, scissors
+        Tracks score and delivers tie, victory, or loss message depending on score
+        after five rounds
         */
         function game(){
             let computerScore = 0;
@@ -128,6 +110,7 @@
             }
         }
 
+        //Begin game
         console.log(game());
 
     </script>
