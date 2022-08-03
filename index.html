@@ -18,7 +18,6 @@
         //This function plays a round of Rock, Paper, Scissors
         //User input is tested against computer choice to determine a winner
         function gameplay(playerSelection, computerSelection){
-
            playerSelection = playerSelection.toLowerCase();
 
            console.log('The computer chose ' + computerSelection + '!');
@@ -98,6 +97,9 @@
             let playerScore = 0;
             for(let round = 1; round <= 5; round++){
                 const playerSelection = prompt('Rock, paper, or scissors?');
+                if(playerSelection === null){
+                    return 'Maybe next time :(';
+                }
                 const computerSelection = getComputerChoice();
                 console.log('Round ' + `${round}` + '\n');
                 let roundResult = gameplay(playerSelection, computerSelection);
