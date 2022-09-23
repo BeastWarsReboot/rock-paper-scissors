@@ -6,7 +6,21 @@
     </head>
 <body>
 
+    <button id="rock"></button>
+    <button id="paper"></button>
+    <button id="scissors"></button>
+
     <script>
+
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach((button) => {
+            button.addEventListener('click', () => {
+                gameplay(button.id,getComputerChoice());
+            });
+        });
+
+        const displayResults = document.createElement('div');
+        document.body.appendChild(displayResults);
 
         //This function determines computer's choice of rock, paper, or scissors
         function getComputerChoice(){
@@ -74,6 +88,7 @@
         Tracks score and delivers tie, victory, or loss message depending on score
         after five rounds
         */
+       /*
         function game(){
             let computerScore = 0;
             let playerScore = 0;
@@ -109,9 +124,10 @@
                 console.log(`Computer scores ${computerScore} to player's ${playerScore}. You lose the game!`)
             }
         }
+        */
 
         //Begin game
-        console.log(game());
+       //console.log(game());
 
     </script>
 
