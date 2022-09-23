@@ -12,6 +12,7 @@
 
     <script>
 
+        //adds event listeners for each button to retrieve player selection
         const buttons = document.querySelectorAll('button');
         buttons.forEach((button) => {
             button.addEventListener('click', () => {
@@ -19,8 +20,19 @@
             });
         });
 
+        //adds divs where results will be displayed
         const displayResults = document.createElement('div');
         document.body.appendChild(displayResults);
+
+        const displayComputerChoice = document.createElement('div');
+        displayResults.appendChild(displayComputerChoice);
+
+        const displayPlayerChoice = document.createElement('div');
+        displayResults.appendChild(displayPlayerChoice);
+
+        const displayRoundResults = document.createElement('div');
+        displayResults.appendChild(displayRoundResults);
+        
 
         //This function determines computer's choice of rock, paper, or scissors
         function getComputerChoice(){
@@ -34,48 +46,59 @@
         function gameplay(playerSelection, computerSelection){
            playerSelection = playerSelection.toLowerCase();
 
-           console.log('The computer chose ' + computerSelection + '!');
-           console.log('You chose ' + playerSelection + '!');
+           //console.log('The computer chose ' + computerSelection + '!');
+           //console.log('You chose ' + playerSelection + '!');
+           displayComputerChoice.textContent = 'The computer chose ' + computerSelection + '!';
+           displayPlayerChoice.textContent = 'You chose ' + playerSelection + '!';
 
            //Win/lose/tie scenarios
            switch(playerSelection){
                 case 'rock':
                     if(computerSelection === 'rock'){
-                        console.log('Same choice, it\'s a tie!\n\n');
+                        //console.log('Same choice, it\'s a tie!\n\n');
+                        displayRoundResults.textContent = 'Same choice, it\'s a tie!\n\n';
                         return 'tie';
                     }
                     else if(computerSelection === 'paper'){
-                        console.log('Paper beats rock. You lose!\n\n');
+                        //console.log('Paper beats rock. You lose!\n\n');
+                        displayRoundResults.textContent = 'Paper beats rock. You lose!\n\n';
                         return 'loss';
                     }
                     else {
-                        console.log('Rock beats scissors. You win!\n\n');
+                        //console.log('Rock beats scissors. You win!\n\n');
+                        displayRoundResults.textContent = 'Rock beats scissors. You win!\n\n';
                         return 'win';
                     }
                 case 'paper':
                     if(computerSelection === 'rock'){
-                        console.log('Paper beats rock. You win!\n\n');
+                        //console.log('Paper beats rock. You win!\n\n');
+                        displayRoundResults.textContent = 'Paper beats rock. You win!\n\n';
                         return 'win';
                     }
                     else if(computerSelection === 'paper'){
-                        console.log('Same choice, it\'s a tie!\n\n');
+                        //console.log('Same choice, it\'s a tie!\n\n');
+                        displayRoundResults.textContent = 'Same choice, it\'s a tie!\n\n';
                         return 'tie';
                     }
                     else {
-                        console.log('Scissors beats paper. You lose!\n\n');
+                        //console.log('Scissors beats paper. You lose!\n\n');
+                        displayRoundResults.textContent = 'Scissors beats paper. You lose!\n\n';
                         return 'loss';
                     }
                 case 'scissors':
                     if(computerSelection === 'rock'){
-                        console.log('Rock beats scissors. You lose!\n\n');
+                        //console.log('Rock beats scissors. You lose!\n\n');
+                        displayRoundResults.textContent = 'Rock beats scissors. You lose!\n\n';
                         return 'loss';
                     }
                     else if(computerSelection === 'paper'){
-                        console.log('Scissors beats paper. You win!\n\n');
+                        //console.log('Scissors beats paper. You win!\n\n');
+                        displayRoundResults.textContent = 'Scissors beats paper. You win!\n\n';
                         return 'win';
                     }
                     else {
-                        console.log('Same choice, it\'s a tie!\n\n');
+                        //console.log('Same choice, it\'s a tie!\n\n');
+                        displayRoundResults.textContent = 'Same choice, it\'s a tie!\n\n';
                         return 'tie';
                     }
                 default:
