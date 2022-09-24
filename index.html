@@ -12,11 +12,18 @@
 
     <script>
 
+        //used to track score
+        let computerScore = 0;
+        let playerScore = 0;
+
         //adds event listeners for each button to retrieve player selection
         const buttons = document.querySelectorAll('button');
         buttons.forEach((button) => {
             button.addEventListener('click', () => {
                 gameplay(button.id,getComputerChoice());
+                score.textContent = 'Player score: ' + playerScore + '<br><br>' + 'Computer Score: ' + computerScore;
+                if(playerScore === 5) return alert('You scored ' + playerScore + ', you win!');
+                else if(computerScore === 5) return alert('Computer scored ' + computerScore + ', computer wins!');
             });
         });
 
@@ -32,7 +39,9 @@
 
         const displayRoundResults = document.createElement('div');
         displayResults.appendChild(displayRoundResults);
-        
+
+        const score = document.createElement('div');
+        displayResults.appendChild(score);
 
         //This function determines computer's choice of rock, paper, or scissors
         function getComputerChoice(){
@@ -44,12 +53,13 @@
         //This function plays a round of Rock, Paper, Scissors
         //User input is tested against computer choice to determine a winner
         function gameplay(playerSelection, computerSelection){
-           playerSelection = playerSelection.toLowerCase();
+           //playerSelection = playerSelection.toLowerCase();
 
            //console.log('The computer chose ' + computerSelection + '!');
            //console.log('You chose ' + playerSelection + '!');
            displayComputerChoice.textContent = 'The computer chose ' + computerSelection + '!';
            displayPlayerChoice.textContent = 'You chose ' + playerSelection + '!';
+           //score.textContent = 'Player score: ' + playerScore + '<br><br>' + 'Computer Score: ' + computerScore;
 
            //Win/lose/tie scenarios
            switch(playerSelection){
@@ -62,17 +72,20 @@
                     else if(computerSelection === 'paper'){
                         //console.log('Paper beats rock. You lose!\n\n');
                         displayRoundResults.textContent = 'Paper beats rock. You lose!\n\n';
+                        computerScore++;
                         return 'loss';
                     }
                     else {
                         //console.log('Rock beats scissors. You win!\n\n');
                         displayRoundResults.textContent = 'Rock beats scissors. You win!\n\n';
+                        playerScore++;
                         return 'win';
                     }
                 case 'paper':
                     if(computerSelection === 'rock'){
                         //console.log('Paper beats rock. You win!\n\n');
                         displayRoundResults.textContent = 'Paper beats rock. You win!\n\n';
+                        playerScore++;
                         return 'win';
                     }
                     else if(computerSelection === 'paper'){
@@ -83,17 +96,20 @@
                     else {
                         //console.log('Scissors beats paper. You lose!\n\n');
                         displayRoundResults.textContent = 'Scissors beats paper. You lose!\n\n';
+                        computerScore++;
                         return 'loss';
                     }
                 case 'scissors':
                     if(computerSelection === 'rock'){
                         //console.log('Rock beats scissors. You lose!\n\n');
                         displayRoundResults.textContent = 'Rock beats scissors. You lose!\n\n';
+                        computerScore++;
                         return 'loss';
                     }
                     else if(computerSelection === 'paper'){
                         //console.log('Scissors beats paper. You win!\n\n');
                         displayRoundResults.textContent = 'Scissors beats paper. You win!\n\n';
+                        playerScore++;
                         return 'win';
                     }
                     else {
@@ -105,6 +121,7 @@
                     return 'invalid'
            }
         }
+        
 
         /*
         game() plays five rounds of gameplay() to complete a full game of rock, paper, scissors
