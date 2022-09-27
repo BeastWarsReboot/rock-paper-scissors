@@ -21,9 +21,7 @@
         buttons.forEach((button) => {
             button.addEventListener('click', () => {
                 gameplay(button.id,getComputerChoice());
-                score.textContent = 'Player score: ' + playerScore + '<br><br>' + 'Computer Score: ' + computerScore;
-                if(playerScore === 5) return alert('You scored ' + playerScore + ', you win!');
-                else if(computerScore === 5) return alert('Computer scored ' + computerScore + ', computer wins!');
+                victory();
             });
         });
 
@@ -41,7 +39,11 @@
         displayResults.appendChild(displayRoundResults);
 
         const score = document.createElement('div');
+        score.setAttribute('style', 'white-space: pre;');
         displayResults.appendChild(score);
+
+        const victoryMsg = document.createElement('div');
+        displayResults.appendChild(victoryMsg);
 
         //This function determines computer's choice of rock, paper, or scissors
         function getComputerChoice(){
@@ -53,13 +55,9 @@
         //This function plays a round of Rock, Paper, Scissors
         //User input is tested against computer choice to determine a winner
         function gameplay(playerSelection, computerSelection){
-           //playerSelection = playerSelection.toLowerCase();
 
-           //console.log('The computer chose ' + computerSelection + '!');
-           //console.log('You chose ' + playerSelection + '!');
            displayComputerChoice.textContent = 'The computer chose ' + computerSelection + '!';
            displayPlayerChoice.textContent = 'You chose ' + playerSelection + '!';
-           //score.textContent = 'Player score: ' + playerScore + '<br><br>' + 'Computer Score: ' + computerScore;
 
            //Win/lose/tie scenarios
            switch(playerSelection){
@@ -120,6 +118,12 @@
                 default:
                     return 'invalid'
            }
+        }
+
+        function victory(){
+            score.textContent = '\nPlayer score: ' + playerScore + '\n' + 'Computer Score: ' + computerScore + '\n\n';
+            if(playerScore === 5) victoryMsg.textContent = 'You scored ' + playerScore + ' points, you win!';
+            else if(computerScore === 5) victoryMsg.textContent = 'Computer scored ' + computerScore + ' points, computer wins!';
         }
         
 
