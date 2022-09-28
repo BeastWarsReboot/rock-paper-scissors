@@ -21,7 +21,8 @@
         buttons.forEach((button) => {
             button.addEventListener('click', () => {
                 gameplay(button.id,getComputerChoice());
-                victory();
+                victoryChk();
+                buttons.disabled = true;
             });
         });
 
@@ -111,10 +112,21 @@
            }
         }
 
-        function victory(){
+        function victoryChk(){
             score.textContent = '\nPlayer score: ' + playerScore + '\n' + 'Computer Score: ' + computerScore + '\n\n';
-            if(playerScore === 5) victoryMsg.textContent = 'You scored ' + playerScore + ' points, you win!';
-            else if(computerScore === 5) victoryMsg.textContent = 'Computer scored ' + computerScore + ' points, computer wins!';
+            if(playerScore === 5){
+                victoryMsg.textContent = 'You scored ' + playerScore + ' points, you win!';
+            } 
+            else if(computerScore === 5){
+                victoryMsg.textContent = 'Computer scored ' + computerScore + ' points, computer wins!';
+            }
+
+            if(playerScore === 5 || computerScore === 5){
+                document.getElementById('rock').disabled = true;
+                document.getElementById('paper').disabled = true;
+                document.getElementById('scissors').disabled = true;
+               //document.querySelectorAll('button').disabled = true;
+            }
         }
         
 
